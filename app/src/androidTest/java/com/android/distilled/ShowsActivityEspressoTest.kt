@@ -3,11 +3,13 @@ package com.android.distilled
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.RootMatchers.isDialog
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.android.distilled.ui.ShowsActivity
+import com.android.distilled.ui.ShowsListAdapter
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -19,16 +21,15 @@ class ShowsActivityEspressoTest {
     var activityRule: ActivityTestRule<ShowsActivity> = ActivityTestRule(ShowsActivity::class.java)
 
     @Test
-    fun validEmailPassword_Case() {
+    fun recyclerview_Case() {
         Thread.sleep(3000)
         onView(withId(R.id.rvShows))
             .check(matches(isDisplayed()))
         Thread.sleep(3000)
     }
 
-
     @Test
-    fun menuClickText() {
+    fun menuButtonText() {
         onView(withId(R.id.sortBy))
             .perform(click())
         Thread.sleep(3000)
@@ -55,6 +56,16 @@ class ShowsActivityEspressoTest {
         onView(withId(R.id.rvShows))
             .perform(swipeDown())
 
+        Thread.sleep(3000)
+    }
+
+    @Test
+    fun recyclerViewItemClick_Case() {
+        Thread.sleep(1500)
+        onView(withId(R.id.rvShows))
+            .perform(RecyclerViewActions.actionOnItemAtPosition<ShowsListAdapter.StateListViewHolder>(
+                2,
+                click()))
         Thread.sleep(3000)
     }
 }
