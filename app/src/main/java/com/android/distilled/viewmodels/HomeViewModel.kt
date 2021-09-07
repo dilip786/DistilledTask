@@ -40,12 +40,12 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    private fun fetchTvShowsDataFromServer() {
+    fun fetchTvShowsDataFromServer(page:Int=1) {
         if (!NetworkUtils().isNetworkAvailable()) {
             return
         }
         viewModelScope.launch {
-            tvShowsRepository.fetchShows(
+            tvShowsRepository.fetchShows(page,
                 onSuccess = {
                     Log.e("DISTILLED", "SUCCESS")
                 },

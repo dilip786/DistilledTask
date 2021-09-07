@@ -18,6 +18,7 @@ import javax.inject.Inject
 class ShowsActivity : AppCompatActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
+
     private lateinit var mViewModel: HomeViewModel
     lateinit var binding: ActivityMainBinding
     private lateinit var showsListAdapter: ShowsListAdapter
@@ -74,7 +75,7 @@ class ShowsActivity : AppCompatActivity() {
     private fun initRecyclerView() {
         showsListAdapter = ShowsListAdapter(mutableListOf()) {
             val intent = Intent(this, ShowDetailActivity::class.java)
-            intent.putExtra("DetailedObj",it)
+            intent.putExtra("DetailedObj", it)
             startActivity(intent)
         }
         binding.rvShows.apply {
