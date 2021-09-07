@@ -17,13 +17,9 @@ Sample project using themoviedb api to get top_rated movies list.
 ### Demo Screenshots
 
 <p float="left">
-  <img src="https://user-images.githubusercontent.com/10658016/114316637-ff09f200-9b21-11eb-840e-37395eb39c6d.png" width="200" />
-  <img src="https://user-images.githubusercontent.com/10658016/114316639-016c4c00-9b22-11eb-9e89-df8c6d2ea68b.png" width="200" /> 
-  <img src="https://user-images.githubusercontent.com/10658016/114316644-04673c80-9b22-11eb-830d-f2359940e4f9.png" width="200" /> 
-  <img src="https://user-images.githubusercontent.com/10658016/114316649-07622d00-9b22-11eb-94d2-46c8933c2bb4.png" width="200" />
-  <img src="https://user-images.githubusercontent.com/10658016/114316656-0cbf7780-9b22-11eb-918b-31fcd055f54d.png" width="200" /> 
-  <img src="https://user-images.githubusercontent.com/10658016/114316657-0f21d180-9b22-11eb-9cbb-ecf9751603f4.png" width="200" />
-  <img src="https://user-images.githubusercontent.com/10658016/114316660-10eb9500-9b22-11eb-870e-9b37c077e703.png" width="200" />
+  <img src="https://user-images.githubusercontent.com/10658016/132337999-72676458-d421-46e1-bf30-366f231fb2d9.png" width="200" />
+  <img src="https://user-images.githubusercontent.com/10658016/132338004-ce8d47ca-a0f3-4f9a-8f97-e73bec950fbd.png" width="200" /> 
+  <img src="https://user-images.githubusercontent.com/10658016/132337956-4a606d57-82e1-40f1-90a4-84654fc937b3.png" width="200" />
 </p>
 
 
