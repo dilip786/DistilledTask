@@ -1,5 +1,6 @@
 package com.android.distilled.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -72,6 +73,9 @@ class ShowsActivity : AppCompatActivity() {
 
     private fun initRecyclerView() {
         showsListAdapter = ShowsListAdapter(mutableListOf()) {
+            val intent = Intent(this, ShowDetailActivity::class.java)
+            intent.putExtra("DetailedObj",it)
+            startActivity(intent)
         }
         binding.rvShows.apply {
             adapter = showsListAdapter

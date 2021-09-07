@@ -6,7 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
+    android:clickable="true"
     android:elevation="10dp"
+    android:foreground="?android:attr/selectableItemBackground"
     tools:context=".ui.ShowsActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,10 +28,10 @@
 
         <TextView
             android:id="@+id/overview"
-            android:maxLines="3"
-            android:ellipsize = "end"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="3"
             android:padding="10dp"
             android:textColor="#858383"
             app:layout_constraintEnd_toEndOf="parent"

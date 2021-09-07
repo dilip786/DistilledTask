@@ -3,6 +3,7 @@ package com.android.distilled.database
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(tableName = "tvShows")
 data class TvShowEntity(
@@ -45,4 +46,4 @@ data class TvShowEntity(
 
     @ColumnInfo(name = "vote_count")
     val voteCount: Int?,
-)
+): Serializable

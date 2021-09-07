@@ -9,4 +9,7 @@
     <string name="clear_sort">Clear sort</string>
     <string name="rating_s">Rating: %s</string>
     <string name="release_date_s">Released on: %s</string>
+    <string name="vote_count">Vote count: %s</string>
+    <string name="popularity">Popularity: %s</string>
+    <string name="original_country">Original Country: %s</string>
 </resources>
