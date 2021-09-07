@@ -11,6 +11,9 @@ Sample project using themoviedb api to get top_rated movies list.
 * Junit, Espresso & Mockito for unit test & UI testing.
 * Dagger2 dependency injection.
 
+###  Architecture pattern
+* MVVM
+
 ### Demo Screenshots
 
 <p float="left">
