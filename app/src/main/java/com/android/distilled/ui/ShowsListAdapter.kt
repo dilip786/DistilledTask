@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.Nullable
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.android.distilled.DistilledApplication.Companion.context
 import com.android.distilled.R
@@ -11,18 +13,23 @@ import com.android.distilled.database.TvShowEntity
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.tvshow_cell.view.*
 
-@SuppressLint("NotifyDataSetChanged")
-class ShowsListAdapter(private var statesList: MutableList<TvShowEntity> = mutableListOf(),private val onClick: (TvShowEntity)->Unit) :
+class ShowsListAdapter(
+    private var statesList: MutableList<TvShowEntity> = mutableListOf(),
+    private val onClick: (TvShowEntity) -> Unit,
+) :
     RecyclerView.Adapter<ShowsListAdapter.StateListViewHolder>() {
 
     fun refreshList(list: MutableList<TvShowEntity> = mutableListOf()) {
+        val diffCallback = ShowsDiffCallback(statesList, list)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
         statesList.clear()
         statesList.addAll(list)
-        notifyDataSetChanged()
+        diffResult.dispatchUpdatesTo(this)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StateListViewHolder {
-        return StateListViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.tvshow_cell,parent,false))
+        return StateListViewHolder(LayoutInflater.from(parent.context)
+            .inflate(R.layout.tvshow_cell, parent, false))
     }
 
 
@@ -54,5 +61,31 @@ class ShowsListAdapter(private var statesList: MutableList<TvShowEntity> = mutab
                 onClick.invoke(item)
             }
         }
+    }
+}
+
+class ShowsDiffCallback(
+    private val oldList: List<TvShowEntity>,
+    private val newList: List<TvShowEntity>,
+) : DiffUtil.Callback() {
+
+    override fun getOldListSize(): Int = oldList.size
+
+    override fun getNewListSize(): Int = newList.size
+
+    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        return oldList[oldItemPosition].id === newList[newItemPosition].id
+    }
+
+    override fun areContentsTheSame(oldPosition: Int, newPosition: Int): Boolean {
+        val (_, v1, n1) = oldList[oldPosition]
+        val (_, v2, n2) = newList[newPosition]
+
+        return n1 == n2 && v1 == v2
+    }
+
+    @Nullable
+    override fun getChangePayload(oldPosition: Int, newPosition: Int): Any? {
+        return super.getChangePayload(oldPosition, newPosition)
     }
 }

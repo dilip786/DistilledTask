@@ -31,12 +31,12 @@ class BottomSheetDialog(private val onClick: (SORTING_OPTIONS, SORTING_TYPE) -> 
 
         binding.tvRatingAsc.setOnClickListener {
             dialog!!.dismiss()
-            onClick.invoke(SORTING_OPTIONS.RATING, SORTING_TYPE.ASC)
+            onClick.invoke(SORTING_OPTIONS.RATING, SORTING_TYPE.DESC)
         }
 
         binding.tvRatingDesc.setOnClickListener {
             dialog!!.dismiss()
-            onClick.invoke(SORTING_OPTIONS.RATING, SORTING_TYPE.DESC)
+            onClick.invoke(SORTING_OPTIONS.RATING, SORTING_TYPE.ASC)
         }
 
         binding.tvClear.setOnClickListener {
