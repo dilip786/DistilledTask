@@ -27,8 +27,11 @@ class HomeViewModel @Inject constructor(
         fetchTvShowsDataFromServer()
     }
 
-    fun getTvShowsFromDb(sortBy: SORTING_OPTIONS = SORTING_OPTIONS.CLEAR) {
-        tvShowsRepository.getTvShowsFromDb(sortBy).observeForever {
+    fun getTvShowsFromDb(
+        sortBy: SORTING_OPTIONS = SORTING_OPTIONS.CLEAR,
+        sortType: SORTING_TYPE = SORTING_TYPE.ASC,
+    ) {
+        tvShowsRepository.getTvShowsFromDb(sortBy,sortType).observeForever {
             if (it.isEmpty()) {
                 mError.value = Errors.ERROR_EMPTY_LIST
                 return@observeForever

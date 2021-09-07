@@ -6,6 +6,7 @@ import com.android.distilled.database.TvShowEntity
 import com.android.distilled.database.TvShowsDao
 import com.android.distilled.network.DistilledApis
 import com.android.distilled.objects.TvShowsResponseDO
+import com.android.distilled.ui.BottomSheetDialog
 import com.android.distilled.ui.BottomSheetDialog.SORTING_OPTIONS
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -30,19 +31,23 @@ class TvShowsRepository @Inject constructor(
         }
     }
 
-    fun getTvShowsFromDb(): LiveData<List<TvShowEntity>> {
-        return tvShowsDao.getTvShowsList()
-    }
-
-    fun getTvShowsFromDb(sortBy: SORTING_OPTIONS): LiveData<List<TvShowEntity>> {
+    fun getTvShowsFromDb(
+        sortBy: SORTING_OPTIONS,
+        sortType: BottomSheetDialog.SORTING_TYPE,
+    ): LiveData<List<TvShowEntity>> {
         return tvShowsDao.getShowsEntities(query = SimpleSQLiteQuery(when (sortBy) {
             SORTING_OPTIONS.CLEAR -> "SELECT * FROM tvShows"
             else -> "SELECT * FROM tvShows ORDER BY ${
                 when (sortBy) {
                     SORTING_OPTIONS.ALPHABETICAL -> "name"
-                    else -> "first_air_date"
+                    else -> "vote_average"
                 }
-            } DESC"
+            } ${
+                when (sortType) {
+                    BottomSheetDialog.SORTING_TYPE.ASC -> "ASC"
+                    else -> "DESC"
+                }
+            }"
         }))
     }
 

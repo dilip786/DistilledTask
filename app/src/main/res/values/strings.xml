@@ -2,8 +2,10 @@
     <string name="app_name">DistilledTask</string>
     <string name="sort_by">Sort by</string>
     <string name="released_date">Released date</string>
-    <string name="rating">Rating</string>
-    <string name="alphabetical">Alphabetical</string>
+    <string name="rating_asc">Rating descending</string>
+    <string name="rating_desc">Rating ascending</string>
+    <string name="alphabetical_asc">Alphabetical ascending</string>
+    <string name="alphabetical_desc">Alphabetical descending</string>
     <string name="clear_sort">Clear sort</string>
     <string name="rating_s">Rating: %s</string>
     <string name="release_date_s">Released on: %s</string>

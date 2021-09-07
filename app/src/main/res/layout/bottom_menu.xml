@@ -6,22 +6,41 @@
     android:padding="15dp">
 
     <TextView
-        android:id="@+id/tvAlphabetical"
+        android:id="@+id/tvAlphabeticalAsc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:padding="10dp"
-        android:text="@string/alphabetical"
+        android:text="@string/alphabetical_asc"
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/tvRating"
+        android:id="@+id/tvAlphabeticalDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="10dp"
+        android:text="@string/alphabetical_desc"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvRatingAsc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:padding="10dp"
-        android:text="@string/rating"
+        android:text="@string/rating_asc"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvRatingDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:text="@string/rating_desc"
         android:textSize="18sp" />
 
     <TextView

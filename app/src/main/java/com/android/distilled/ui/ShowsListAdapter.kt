@@ -1,7 +1,6 @@
 package com.android.distilled.ui
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +12,7 @@ import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.tvshow_cell.view.*
 
 @SuppressLint("NotifyDataSetChanged")
-class ShowsListAdapter(private var statesList: MutableList<TvShowEntity> = mutableListOf()) :
+class ShowsListAdapter(private var statesList: MutableList<TvShowEntity> = mutableListOf(),private val onClick: (TvShowEntity)->Unit) :
     RecyclerView.Adapter<ShowsListAdapter.StateListViewHolder>() {
 
     fun refreshList(list: MutableList<TvShowEntity> = mutableListOf()) {
@@ -39,9 +38,8 @@ class ShowsListAdapter(private var statesList: MutableList<TvShowEntity> = mutab
         return statesList.size
     }
 
-    class StateListViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+    inner class StateListViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         fun bind(item: TvShowEntity) {
-            Log.e("StateListViewHolder",item.toString())
             itemView.overview.text = item.overview
             itemView.title.text = item.name
             itemView.releaseDate.text =
@@ -51,8 +49,10 @@ class ShowsListAdapter(private var statesList: MutableList<TvShowEntity> = mutab
             Glide.with(view.context)
                 .load("https://image.tmdb.org/t/p/w500${item.posterPath}")
                 .centerCrop()
-                .into(itemView.imageView);
-
+                .into(itemView.imageView)
+            itemView.tvShow.setOnClickListener {
+                onClick.invoke(item)
+            }
         }
     }
 }

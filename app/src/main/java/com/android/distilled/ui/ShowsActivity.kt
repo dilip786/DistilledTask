@@ -71,7 +71,8 @@ class ShowsActivity : AppCompatActivity() {
     }
 
     private fun initRecyclerView() {
-        showsListAdapter = ShowsListAdapter(mutableListOf())
+        showsListAdapter = ShowsListAdapter(mutableListOf()) {
+        }
         binding.rvShows.apply {
             adapter = showsListAdapter
             layoutManager = LinearLayoutManager(context)
@@ -79,8 +80,8 @@ class ShowsActivity : AppCompatActivity() {
     }
 
     private fun showBottomOptionsDialog() {
-        BottomSheetDialog {
-            mViewModel.getTvShowsFromDb(it)
+        BottomSheetDialog { sortBy, sortType ->
+            mViewModel.getTvShowsFromDb(sortBy, sortType)
         }.show(supportFragmentManager, "ShowsActivity")
     }
 }
